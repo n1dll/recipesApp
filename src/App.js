@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-function App() {
+import NavBar from "./components/NavBar";
+import Recipes from "./components/Recipes";
+import useRecipes from "./hooks/useRecipes";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+import "./components/SearchBar.css";
+import "./App.css";
+
+const App = () => {
+  const [term, setTerm] = useState("");
+  const [recipes, search] = useRecipes();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <NavBar search={search} term={term} setTerm={setTerm} />
+      </BrowserRouter>
+      <InfiniteScroll
+        dataLength={recipes.length}
+        next={() => search(term)}
+        hasMore={true}
+        scrollThreshold={0.9}
+      >
+        <Recipes recipes={recipes} />
+      </InfiniteScroll>
     </div>
   );
-}
+};
 
 export default App;
