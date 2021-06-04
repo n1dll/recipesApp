@@ -6,7 +6,7 @@
 .App {
   font-family: "Poppins", sans-serif;
   letter-spacing: 3px;
-  background: url(./images/1.jpg);
+  background: url(./images/3.jpg) center center;
   min-height: 100vh;
   min-width: 100vw;
   overflow: hidden;
