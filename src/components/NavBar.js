@@ -11,24 +11,12 @@ const NavBar = ({ search, term, setTerm }) => {
           Tasty
           <i className="fas fa-cookie-bite"></i>
         </Link>
-        <SearchBar search={search} term={term} setTerm={setTerm} />
-        <ul className="list-items">
-          <li className="item">
-            <Link to="/" className="text">
-              Home
-            </Link>
-          </li>
-          <li className="item">
-            <Link to="/recipes" className="text">
-              Recipes
-            </Link>
-          </li>
-          <li className="item">
-            <Link to="/footer" className="text">
-              Contacts
-            </Link>
-          </li>
-        </ul>
+        <SearchBar
+          className="search"
+          search={search}
+          term={term}
+          setTerm={setTerm}
+        />
       </div>
     </nav>
   );
